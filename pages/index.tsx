@@ -1,15 +1,7 @@
 import { useState } from "react";
 
-import {
-  Flex,
-  Spacer,
-  Heading,
-  Box,
-  List,
-  ListItem,
-  Text,
-  Image
-} from "@chakra-ui/react";
+import { Heading, Box, List, ListItem, Text, Image } from "@chakra-ui/react";
+import { ChevronDownIcon } from "@chakra-ui/icons";
 
 import Link from "next/link";
 
@@ -33,50 +25,56 @@ const RootPage: React.VFC = () => {
     "TikTok"
   ]);
 
-  // const [snsInfo] = useState([{ icon: "", src: "" }, { icon: "", src: "" }]);
   return (
     <>
       <Box as="section" height="85vh" position="relative">
         <Heading
           as="h1"
-          fontSize="4.8rem"
+          fontSize="6.4rem"
           fontWeight="bold"
           position="absolute"
           top="50%"
-          left="10%"
+          left="16px"
           transform="translateY(-50%)"
+          letterSpacing={{ base: "10px", md: "20px" }}
         >
-          何もない自由な空間での創作
+          ようこそ！
         </Heading>
+        <Box
+          position="absolute"
+          bottom="0"
+          left="50%"
+          transform="translateX(-50%)"
+        >
+          <ChevronDownIcon h={40} w={40} />
+        </Box>
       </Box>
       <Box>
-        <Box as="section">
-          <Heading as="h2" fontSize="3.2rem" fontWeight="bold" ml="16">
+        <Box as="section" pt="100" maxWidth="1200" mx="auto">
+          <Heading as="h2" fontSize="4.8rem" fontWeight="bold" ml="16">
             About
           </Heading>
           <Box position="relative">
-            <Box
-              width="60%"
-              borderRadius="8px"
-              padding="16px"
-              // boxShadow="0 6px 10px 0 rgba(0 0 0 / 50%)"
-            >
+            <Box width="60%" borderRadius="8px" padding="16px">
               <List>
                 {profileBaseInfos.map((profileBaseInfo, i) => {
-                  const isName = cssProperty => {
+                  const isNameCssPropertyVal = (
+                    cssPropertyVal: string,
+                    baseCssPropertyVal: string
+                  ) => {
                     return `${profileBaseInfo.tit}` === "Name"
-                      ? cssProperty
-                      : "";
+                      ? cssPropertyVal
+                      : baseCssPropertyVal;
                   };
 
                   return (
                     <ListItem
                       key={i}
-                      fontSize={isName("16px")}
-                      fontWeight={isName("bold")}
+                      fontSize={isNameCssPropertyVal("16px", "14px")}
+                      fontWeight={isNameCssPropertyVal("bold", "normal")}
                       mt="40"
                     >
-                      <Text mr="8">{profileBaseInfo.tit}</Text>
+                      <Text mr="8px">{profileBaseInfo.tit}</Text>
 
                       <Box mt="8px" ml="64px">
                         <Text>{profileBaseInfo.val}</Text>
@@ -85,7 +83,7 @@ const RootPage: React.VFC = () => {
                   );
                 })}
 
-                <ListItem display="flex" flexWrap="wrap" mt="40">
+                <ListItem mt="40">
                   <Text>Like</Text>
                   <Box display="flex" flexWrap="wrap" mt="8px" ml="64px">
                     {profileLikeInfos.map((profileLikeInfo, i) => {
@@ -104,7 +102,7 @@ const RootPage: React.VFC = () => {
               minWidth="200px"
               maxWidth="300px"
               position="absolute"
-              top="0"
+              top="-39px"
               left="40%"
             >
               <Image src="/images/profile.jpg"></Image>
@@ -112,13 +110,15 @@ const RootPage: React.VFC = () => {
           </Box>
         </Box>
 
-        <Box as="section">
-          <Heading as="h2" fontSize="3.2rem" fontWeight="bold" ml="16">
+        <Box as="section" pt="100" maxWidth="1200" mx="auto">
+          <Heading as="h2" fontSize="4.8rem" fontWeight="bold" ml="16">
             Blog
           </Heading>
-          <Link href="/blog">
-            <a>blogページへ</a>
-          </Link>
+          <Box mt="40" ml="16">
+            <Link href="/blog">
+              <a>blogページへ</a>
+            </Link>
+          </Box>
         </Box>
       </Box>
     </>

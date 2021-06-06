@@ -1,7 +1,9 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, Box, Text } from "@chakra-ui/react";
 import theme from "../src/theme/theme";
-import Link from "next/link";
+
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 class MyDocument extends Document {
   render() {
@@ -9,20 +11,18 @@ class MyDocument extends Document {
       <Html>
         <Head />
         <ChakraProvider theme={theme}>
-          <body>
-            <header>
-              <div style={{ width: 150 }}>
-                <Link href="/">
-                  <a>
-                    <img src="/images/akispacecrea-logo.svg" alt="ロゴ" />
-                  </a>
-                </Link>
-              </div>
-            </header>
+          <Box
+            as="body"
+            pb="65"
+            fontSize="1.4rem"
+            color="#333"
+            lineHeight="1.5"
+          >
             <Main />
+            <Footer />
+            <Header />
             <NextScript />
-            <footer>&copy; akispacecrea</footer>
-          </body>
+          </Box>
         </ChakraProvider>
       </Html>
     );
