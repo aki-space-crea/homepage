@@ -22,8 +22,6 @@ export const getStaticPaths = async () => {
 
   const articles = await res.json();
 
-  // console.log(articles);
-
   const paths = articles.contents.map(article => {
     const slug = String(article.id);
     return { params: { slug: slug } };
@@ -56,8 +54,6 @@ export const getStaticProps = async context => {
 
     return arr.join("");
   };
-
-  // console.log(text());
 
   return {
     props: {
