@@ -3,14 +3,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import theme from "../src/theme/theme";
 import Link from "next/link";
 
-// import Header from "../components/Header";
-
 class MyDocument extends Document {
-  // static async getInitialProps(ctx) {
-  //   const initialProps = await Document.getInitialProps(ctx);
-  //   return { ...initialProps };
-  // }
-
   render() {
     return (
       <Html>

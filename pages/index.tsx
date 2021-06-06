@@ -36,7 +36,7 @@ const RootPage: React.VFC = () => {
   // const [snsInfo] = useState([{ icon: "", src: "" }, { icon: "", src: "" }]);
   return (
     <>
-      <section style={{ height: "85vh", position: "relative" }}>
+      <Box as="section" height="85vh" position="relative">
         <Heading
           as="h1"
           fontSize="4.8rem"
@@ -48,9 +48,9 @@ const RootPage: React.VFC = () => {
         >
           何もない自由な空間での創作
         </Heading>
-      </section>
+      </Box>
       <Box>
-        <section>
+        <Box as="section">
           <Heading as="h2" fontSize="3.2rem" fontWeight="bold" ml="16">
             About
           </Heading>
@@ -59,7 +59,7 @@ const RootPage: React.VFC = () => {
               width="60%"
               borderRadius="8px"
               padding="16px"
-              boxShadow="0 6px 10px 0 rgba(0 0 0 / 50%)"
+              // boxShadow="0 6px 10px 0 rgba(0 0 0 / 50%)"
             >
               <List>
                 {profileBaseInfos.map((profileBaseInfo, i) => {
@@ -110,16 +110,16 @@ const RootPage: React.VFC = () => {
               <Image src="/images/profile.jpg"></Image>
             </Box>
           </Box>
-        </section>
+        </Box>
 
-        <section>
+        <Box as="section">
           <Heading as="h2" fontSize="3.2rem" fontWeight="bold" ml="16">
             Blog
           </Heading>
           <Link href="/blog">
             <a>blogページへ</a>
           </Link>
-        </section>
+        </Box>
       </Box>
     </>
   );
