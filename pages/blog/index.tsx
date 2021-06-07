@@ -4,28 +4,49 @@ import Link from "next/link";
 const index = props => {
   const blogLists = props.blog.contents;
   return (
-    <section>
-      <Heading as="h1">Blog</Heading>
+    <Box>
+      <Box as="section" height="85vh" position="relative">
+        <Heading
+          as="h1"
+          fontSize="6.4rem"
+          fontWeight="bold"
+          position="absolute"
+          top="50%"
+          left="16px"
+          transform="translateY(-50%)"
+          letterSpacing={{ base: "10px", md: "20px" }}
+        >
+          Blog
+        </Heading>
+
+        <Box mr="24px">
+          <Link href="/">
+            <a>About</a>
+          </Link>
+        </Box>
+      </Box>
       <List display="flex" justifyContent="space-around" px="16px">
         {blogLists.map(blogItem => {
           return (
             <ListItem width="45%" maxWidth="45%" key={blogItem.id}>
               <Link href="/blog/[slug]" as={`/blog/${blogItem.id}`}>
                 <a
-                  style={{ height: 200, display: `block`, overflow: `hidden` }}
+                  style={{ height: 250, display: `block`, overflow: `hidden` }}
                 >
-                  <Image src={blogItem.img.url}></Image>
+                  <Image src={blogItem.img.src.url}></Image>
                 </a>
               </Link>
               <Box>
-                <Text>{blogItem.title}</Text>
+                <Text fontSize="2.4rem" fontWeight="bold">
+                  {blogItem.title}
+                </Text>
                 <Text>{blogItem.updatedAt}</Text>
               </Box>
             </ListItem>
           );
         })}
       </List>
-    </section>
+    </Box>
   );
 };
 
@@ -33,10 +54,7 @@ export const getStaticProps = async () => {
   const key = {
     headers: { "X-API-KEY": process.env.XAPIKEY }
   };
-  const res = await fetch(
-    `https://akispacecrea-test.microcms.io/api/v1/blog/`,
-    key
-  );
+  const res = await fetch(`https://akispacecrea.microcms.io/api/v1/blog/`, key);
 
   const blogData = await res.json();
 

@@ -1,13 +1,24 @@
+import { Box, Heading, Image, Flex } from "@chakra-ui/react";
+
 const SSGArticlePage = props => {
   return (
-    <div>
-      <h1>{props.title}</h1>
-      <div
-        dangerouslySetInnerHTML={{
-          __html: `${props.body}`
-        }}
-      ></div>
-    </div>
+    <>
+      <Box as="section">
+        <Flex height="500px" overflow="hidden" justify="center">
+          <Image src={props.img.src.url} alt={props.img.alt} />
+        </Flex>
+      </Box>
+      <Box pt="100" pr="16px" pl="16px" maxWidth="1200" mx="auto">
+        <Heading as="h1" fontSize="3.2rem" fontWeight="bold">
+          {props.title}
+        </Heading>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: `${props.body}`
+          }}
+        ></div>
+      </Box>
+    </>
   );
 };
 
@@ -15,10 +26,7 @@ export const getStaticPaths = async () => {
   const key = {
     headers: { "X-API-KEY": process.env.XAPIKEY }
   };
-  const res = await fetch(
-    "https://akispacecrea-test.microcms.io/api/v1/blog",
-    key
-  );
+  const res = await fetch(`https://akispacecrea.microcms.io/api/v1/blog/`, key);
 
   const articles = await res.json();
 
@@ -40,7 +48,7 @@ export const getStaticProps = async context => {
     headers: { "X-API-KEY": process.env.XAPIKEY }
   };
   const res = await fetch(
-    `https://akispacecrea-test.microcms.io/api/v1/blog/${slug}`,
+    `https://akispacecrea.microcms.io/api/v1/blog/${slug}`,
     key
   );
 
