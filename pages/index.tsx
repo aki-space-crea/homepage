@@ -50,11 +50,6 @@ const RootPage: React.VFC = () => {
         </Box>
       </Box>
       <Box>
-        <Box mr="24px">
-          <Link href="/blog">
-            <a>About</a>
-          </Link>
-        </Box>
         <Box as="section" pt="100" maxWidth="1200" mx="auto">
           <Heading as="h2" fontSize="4.8rem" fontWeight="bold" ml="16">
             About
