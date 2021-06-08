@@ -1,11 +1,40 @@
+import Link from "next/link";
 import { useState } from "react";
 
-import { Heading, Box, List, ListItem, Text, Image } from "@chakra-ui/react";
+import {
+  Heading,
+  Box,
+  List,
+  ListItem,
+  Text,
+  Image,
+  Flex
+} from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 
-import Link from "next/link";
+type Props = {
+  work: [
+    {
+      id: string;
+      createdAt: string;
+      updatedAt: string;
+      publishedAt: string;
+      revisedAt: string;
+      richEditor: string;
+      img: {
+        fieldId: string;
+        src: {
+          url: string;
+          height: number;
+          width: number;
+        };
+        alt: string;
+      };
+    }
+  ];
+};
 
-const RootPage: React.VFC = () => {
+const RootPage: React.VFC = (props: Props) => {
   const [profileBaseInfos] = useState([
     { tit: "Name", val: "AKI" },
     { tit: "Gender", val: "X" },
@@ -27,18 +56,38 @@ const RootPage: React.VFC = () => {
 
   return (
     <>
-      <Box as="section" height="85vh" position="relative">
+      <Flex
+        as="section"
+        // height="85vh"
+        position="relative"
+        justify="center"
+        align="center"
+        pt="130px"
+        pb="100px"
+        boxSizing="border-box"
+      >
+        <Box minWidth="200px" maxWidth="500px">
+          <Image src="/images/profile.jpg"></Image>
+        </Box>
         <Heading
           as="h1"
+          height="100%"
           fontSize="6.4rem"
           fontWeight="bold"
           position="absolute"
           top="50%"
-          left="16px"
-          transform="translateY(-50%)"
-          letterSpacing={{ base: "10px", md: "20px" }}
+          left="50%"
+          transform="translate(-50%, -46.5%)"
+          letterSpacing="5px"
+          textAlign="center"
         >
-          ようこそ！
+          Hi!! I'm
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          Kuroda Aki
         </Heading>
         <Box
           position="absolute"
@@ -48,7 +97,7 @@ const RootPage: React.VFC = () => {
         >
           <ChevronDownIcon h={40} w={40} />
         </Box>
-      </Box>
+      </Flex>
       <Box>
         <Box as="section" pt="100" maxWidth="1200" mx="auto">
           <Heading as="h2" fontSize="4.8rem" fontWeight="bold" ml="16">
@@ -97,16 +146,6 @@ const RootPage: React.VFC = () => {
                 </ListItem>
               </List>
             </Box>
-            <Box
-              width="40%"
-              minWidth="200px"
-              maxWidth="300px"
-              position="absolute"
-              top="-39px"
-              left="40%"
-            >
-              <Image src="/images/profile.jpg"></Image>
-            </Box>
           </Box>
         </Box>
 
@@ -114,7 +153,22 @@ const RootPage: React.VFC = () => {
           <Heading as="h2" fontSize="4.8rem" fontWeight="bold" ml="16">
             Work
           </Heading>
-          <List></List>
+          <List display="flex" flexWrap="wrap">
+            {props.work.map(work => {
+              return (
+                <ListItem key={work.id} width="45%">
+                  <Box>
+                    <Image src={work.img.src.url} alt={work.img.alt} />
+                  </Box>
+                  <Box
+                    dangerouslySetInnerHTML={{
+                      __html: `${work.richEditor}`
+                    }}
+                  ></Box>
+                </ListItem>
+              );
+            })}
+          </List>
         </Box>
 
         <Box as="section" pt="100" maxWidth="1200" mx="auto">
@@ -130,6 +184,21 @@ const RootPage: React.VFC = () => {
       </Box>
     </>
   );
+};
+
+export const getStaticProps = async () => {
+  const key = {
+    headers: { "X-API-KEY": process.env.XAPIKEY }
+  };
+  const res = await fetch(`https://akispacecrea.microcms.io/api/v1/work/`, key);
+
+  const works = await res.json();
+
+  return {
+    props: {
+      work: works.contents
+    }
+  };
 };
 
 export default RootPage;
