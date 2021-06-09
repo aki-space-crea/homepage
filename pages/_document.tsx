@@ -4,6 +4,7 @@ import theme from "../src/theme/theme";
 
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Layout from "../components/Layout";
 
 class MyDocument extends Document {
   render() {
@@ -13,14 +14,16 @@ class MyDocument extends Document {
         <ChakraProvider theme={theme}>
           <Box
             as="body"
-            pb="65"
+            pb={65}
             fontSize="1.4rem"
             color="#333"
-            lineHeight="1.5"
+            lineHeight={1.5}
           >
-            <Main />
-            <Footer />
-            <Header />
+            <Layout>
+              <Main />
+              <Footer />
+              <Header />
+            </Layout>
             <NextScript />
           </Box>
         </ChakraProvider>

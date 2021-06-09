@@ -4,11 +4,11 @@ const SSGArticlePage = props => {
   return (
     <>
       <Box as="section">
-        <Flex height="500px" overflow="hidden" justify="center">
+        <Flex height={500} overflow="hidden" justify="center">
           <Image src={props.img.src.url} alt={props.img.alt} />
         </Flex>
       </Box>
-      <Box pt="100" pr="16px" pl="16px" maxWidth="1200" mx="auto">
+      <Box pt={100} pr={16} pl={16} maxWidth={1200} mx="auto">
         <Heading as="h1" fontSize="3.2rem" fontWeight="bold">
           {props.title}
         </Heading>

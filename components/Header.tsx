@@ -12,11 +12,11 @@ const Header: VFC = () => {
       position="fixed"
       bottom="0"
       width="100%"
-      p="16px"
+      p={8}
       boxShadow="0 6px 10px 0 rgba(0 0 0 / 50%)"
       background="rgba(255, 255, 255, 0.8)"
     >
-      <Box width="150px" mr="100px">
+      <Box width={150} mr={100}>
         <Link href="/">
           <a>
             <img src="/images/akispacecrea-logo.svg" alt="ロゴ" />
@@ -24,7 +24,7 @@ const Header: VFC = () => {
         </Link>
       </Box>
       <Flex as="nav" flexGrow={2}>
-        <Box mr="24px">
+        <Box mr={24}>
           <Link href="/">
             <a>About</a>
           </Link>

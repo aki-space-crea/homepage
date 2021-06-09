@@ -8,7 +8,7 @@ import {
   ListItem,
   Text,
   Image,
-  Flex
+  Flex,
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 
@@ -40,8 +40,8 @@ const RootPage: React.VFC = (props: Props) => {
     { tit: "Gender", val: "X" },
     {
       tit: "Occupation",
-      val: "FrontEndEngineer, WebDesigner & GranphicDeginer"
-    }
+      val: "FrontEndEngineer, WebDesigner & GranphicDeginer",
+    },
   ]);
 
   const [profileLikeInfos] = useState([
@@ -51,22 +51,21 @@ const RootPage: React.VFC = (props: Props) => {
     "サイクリンング",
     "カラオケ",
     "YouTube",
-    "TikTok"
+    "TikTok",
   ]);
 
   return (
     <>
       <Flex
         as="section"
-        // height="85vh"
         position="relative"
         justify="center"
         align="center"
-        pt="130px"
-        pb="100px"
+        pt={130}
+        pb={100}
         boxSizing="border-box"
       >
-        <Box minWidth="200px" maxWidth="500px">
+        <Box minWidth={200} maxWidth={500} width="50%">
           <Image src="/images/profile.jpg"></Image>
         </Box>
         <Heading
@@ -89,22 +88,17 @@ const RootPage: React.VFC = (props: Props) => {
           <br />
           Kuroda Aki
         </Heading>
-        <Box
-          position="absolute"
-          bottom="0"
-          left="50%"
-          transform="translateX(-50%)"
-        >
-          <ChevronDownIcon h={40} w={40} />
-        </Box>
+      </Flex>
+      <Flex justify="center" mt={140}>
+        <ChevronDownIcon className="downArrow" h={40} w={40} />
       </Flex>
       <Box>
-        <Box as="section" pt="100" maxWidth="1200" mx="auto">
-          <Heading as="h2" fontSize="4.8rem" fontWeight="bold" ml="16">
+        <Box as="section" pt={100} maxWidth={1200} mx="auto">
+          <Heading as="h2" fontSize="4.8rem" fontWeight="bold" ml={16}>
             About
           </Heading>
           <Box position="relative">
-            <Box width="60%" borderRadius="8px" padding="16px">
+            <Box width="60%" borderRadius={8} p={16}>
               <List>
                 {profileBaseInfos.map((profileBaseInfo, i) => {
                   const isNameCssPropertyVal = (
@@ -121,23 +115,23 @@ const RootPage: React.VFC = (props: Props) => {
                       key={i}
                       fontSize={isNameCssPropertyVal("16px", "14px")}
                       fontWeight={isNameCssPropertyVal("bold", "normal")}
-                      mt="40"
+                      mt={40}
                     >
-                      <Text mr="8px">{profileBaseInfo.tit}</Text>
+                      <Text mr={8}>{profileBaseInfo.tit}</Text>
 
-                      <Box mt="8px" ml="64px">
+                      <Box mt={8} ml={64}>
                         <Text>{profileBaseInfo.val}</Text>
                       </Box>
                     </ListItem>
                   );
                 })}
 
-                <ListItem mt="40">
+                <ListItem mt={40}>
                   <Text>Like</Text>
-                  <Box display="flex" flexWrap="wrap" mt="8px" ml="64px">
+                  <Box display="flex" flexWrap="wrap" mt={8} ml={64}>
                     {profileLikeInfos.map((profileLikeInfo, i) => {
                       return (
-                        <Text key={i} mr="8px">
+                        <Text key={i} mr={8}>
                           {profileLikeInfo}
                         </Text>
                       );
@@ -149,12 +143,12 @@ const RootPage: React.VFC = (props: Props) => {
           </Box>
         </Box>
 
-        <Box as="section" pt="100" maxWidth="1200" mx="auto">
-          <Heading as="h2" fontSize="4.8rem" fontWeight="bold" ml="16">
+        <Box as="section" pt="100" maxWidth={1200} mx="auto">
+          <Heading as="h2" fontSize="4.8rem" fontWeight="bold" ml={16}>
             Work
           </Heading>
-          <List display="flex" flexWrap="wrap">
-            {props.work.map(work => {
+          <List display="flex" flexWrap="wrap" mx={16}>
+            {props.work.map((work) => {
               return (
                 <ListItem key={work.id} width="45%">
                   <Box>
@@ -162,7 +156,7 @@ const RootPage: React.VFC = (props: Props) => {
                   </Box>
                   <Box
                     dangerouslySetInnerHTML={{
-                      __html: `${work.richEditor}`
+                      __html: `${work.richEditor}`,
                     }}
                   ></Box>
                 </ListItem>
@@ -171,11 +165,11 @@ const RootPage: React.VFC = (props: Props) => {
           </List>
         </Box>
 
-        <Box as="section" pt="100" maxWidth="1200" mx="auto">
+        <Box as="section" pt={100} maxWidth={1200} mx="auto">
           <Heading as="h2" fontSize="4.8rem" fontWeight="bold" ml="16">
             Blog
           </Heading>
-          <Box mt="40" ml="16">
+          <Box mt={40} ml={16}>
             <Link href="/blog">
               <a>blogページへ</a>
             </Link>
@@ -188,7 +182,7 @@ const RootPage: React.VFC = (props: Props) => {
 
 export const getStaticProps = async () => {
   const key = {
-    headers: { "X-API-KEY": process.env.XAPIKEY }
+    headers: { "X-API-KEY": process.env.XAPIKEY },
   };
   const res = await fetch(`https://akispacecrea.microcms.io/api/v1/work/`, key);
 
@@ -196,8 +190,8 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      work: works.contents
-    }
+      work: works.contents,
+    },
   };
 };
 
