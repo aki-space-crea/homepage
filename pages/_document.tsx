@@ -1,10 +1,8 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
-import { ChakraProvider, Box, Text } from "@chakra-ui/react";
+import { ChakraProvider, Box, ColorModeScript } from "@chakra-ui/react";
 import theme from "../src/theme/theme";
 
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import Layout from "../components/Layout";
+import Layout from "../src/components/Layout";
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -19,15 +17,13 @@ class MyDocument extends Document {
         <ChakraProvider theme={theme}>
           <Box
             as="body"
-            pb={65}
+            pb="65px"
             fontSize="1.4rem"
-            color={"gray.700"}
-            lineHeight={1.5}
+            lineHeight="1.5"
           >
+            <ColorModeScript initialColorMode={theme.config.initialColorMode} />
             <Layout>
               <Main />
-              <Footer />
-              <Header />
             </Layout>
             <NextScript />
           </Box>

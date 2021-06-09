@@ -1,6 +1,9 @@
 import Head from "next/head";
 import { ChakraProvider } from "@chakra-ui/react";
 
+import Header from "../src/components/Header";
+import Footer from "../src/components/Footer";
+
 export default function App(props) {
   const { Component, pageProps } = props;
 
@@ -24,6 +27,8 @@ export default function App(props) {
 
       <ChakraProvider>
         <Component {...pageProps} />
+        <Header />
+        <Footer />
       </ChakraProvider>
     </>
   );

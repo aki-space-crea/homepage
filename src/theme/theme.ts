@@ -1,10 +1,20 @@
-import { extendTheme } from "@chakra-ui/react";
+import { mode } from '@chakra-ui/theme-tools';
+import { extendTheme, ThemeConfig } from "@chakra-ui/react";
+
+const config: ThemeConfig = {
+  initialColorMode: "light",
+  useSystemColorMode: false,
+}
 
 const theme = extendTheme({
+  config,
   styles: {
-    global: {
+    global: props => ({
       html: {
-        fontSize: 10
+        fontSize: "10px"
+      },
+      body: {
+        color: mode('gray.700', '#fff')(props),
       },
       h1: {
         letterSpacing: "5px"
@@ -21,7 +31,7 @@ const theme = extendTheme({
           letterSpacing: "3px"
         }
       }
-    }
+    })
   }
 });
 
