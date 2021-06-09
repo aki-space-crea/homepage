@@ -6,9 +6,20 @@ const theme = extendTheme({
       html: {
         fontSize: 10
       },
+      h1: {
+        letterSpacing: "5px"
+      },
       h2: {
         fontSize: "2.4rem",
-        fontWeight: "bold"
+        fontWeight: "bold",
+        letterSpacing: "3px"
+      },
+      ".article-main": {
+        h2: {
+          fontSize: "2.4rem",
+          fontWeight: "bold",
+          letterSpacing: "3px"
+        }
       }
     }
   }

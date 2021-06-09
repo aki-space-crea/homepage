@@ -7,6 +7,11 @@ import Footer from "../components/Footer";
 import Layout from "../components/Layout";
 
 class MyDocument extends Document {
+  static async getInitialProps(ctx) {
+    const initialProps = await Document.getInitialProps(ctx)
+    return { ...initialProps }
+  }
+
   render() {
     return (
       <Html>
@@ -16,7 +21,7 @@ class MyDocument extends Document {
             as="body"
             pb={65}
             fontSize="1.4rem"
-            color="#333"
+            color={"gray.700"}
             lineHeight={1.5}
           >
             <Layout>

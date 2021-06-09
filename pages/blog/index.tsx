@@ -12,18 +12,11 @@ const index = props => {
           fontWeight="bold"
           position="absolute"
           top="50%"
-          left={16}
+          left="16px"
           transform="translateY(-50%)"
-          letterSpacing={{ base: "10px", md: "20px" }}
         >
           Blog
         </Heading>
-
-        <Box mr={24}>
-          <Link href="/">
-            <a>About</a>
-          </Link>
-        </Box>
       </Box>
       <List display="flex" justifyContent="space-around" px={16}>
         {blogLists.map(blogItem => {

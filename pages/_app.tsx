@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { ChakraProvider } from "@chakra-ui/react";
 
 export default function App(props) {
   const { Component, pageProps } = props;
@@ -20,7 +21,10 @@ export default function App(props) {
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
         />
       </Head>
-      <Component {...pageProps} />
+
+      <ChakraProvider>
+        <Component {...pageProps} />
+      </ChakraProvider>
     </>
   );
 }

@@ -61,44 +61,41 @@ const RootPage: React.VFC = (props: Props) => {
         position="relative"
         justify="center"
         align="center"
-        pt={130}
-        pb={100}
+        pt="130px"
+        pb="100px"
         boxSizing="border-box"
       >
-        <Box minWidth={200} maxWidth={500} width="50%">
+        <Box minWidth="200px" maxWidth="500px" width="50%">
           <Image src="/images/profile.jpg"></Image>
         </Box>
         <Heading
           as="h1"
           height="100%"
-          fontSize="6.4rem"
+          width="100%"
+          fontSize={{ base: "4.8rem", md: "6.4rem"}}
           fontWeight="bold"
           position="absolute"
           top="50%"
           left="50%"
           transform="translate(-50%, -46.5%)"
-          letterSpacing="5px"
           textAlign="center"
+          display="flex"
+          justifyContent="center"
+          alignItems="flex-end"
         >
-          Hi!! I'm
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
           Kuroda Aki
         </Heading>
       </Flex>
-      <Flex justify="center" mt={140}>
-        <ChevronDownIcon className="downArrow" h={40} w={40} />
+      <Flex justify="center" mt="140px">
+        <ChevronDownIcon className="downArrow" h="40px" w="40px" />
       </Flex>
       <Box>
-        <Box as="section" pt={100} maxWidth={1200} mx="auto">
-          <Heading as="h2" fontSize="4.8rem" fontWeight="bold" ml={16}>
+        <Box as="section" pt="100px" maxWidth="1200px" mx="auto">
+          <Heading as="h2" fontSize="4.8rem" fontWeight="bold" ml="16px">
             About
           </Heading>
           <Box position="relative">
-            <Box width="60%" borderRadius={8} p={16}>
+            <Box width="60%" borderRadius="8px" mt="32px" mx="16px">
               <List>
                 {profileBaseInfos.map((profileBaseInfo, i) => {
                   const isNameCssPropertyVal = (
@@ -115,23 +112,23 @@ const RootPage: React.VFC = (props: Props) => {
                       key={i}
                       fontSize={isNameCssPropertyVal("16px", "14px")}
                       fontWeight={isNameCssPropertyVal("bold", "normal")}
-                      mt={40}
+                      mt={isNameCssPropertyVal("0", "60px")}
                     >
-                      <Text mr={8}>{profileBaseInfo.tit}</Text>
+                      <Text mr="8px">{profileBaseInfo.tit}</Text>
 
-                      <Box mt={8} ml={64}>
+                      <Box mt="16px" ml="64px">
                         <Text>{profileBaseInfo.val}</Text>
                       </Box>
                     </ListItem>
                   );
                 })}
 
-                <ListItem mt={40}>
+                <ListItem mt="40px">
                   <Text>Like</Text>
-                  <Box display="flex" flexWrap="wrap" mt={8} ml={64}>
+                  <Box display="flex" flexWrap="wrap" mt="8px" ml="64px">
                     {profileLikeInfos.map((profileLikeInfo, i) => {
                       return (
-                        <Text key={i} mr={8}>
+                        <Text key={i} mr="8px">
                           {profileLikeInfo}
                         </Text>
                       );
@@ -143,11 +140,11 @@ const RootPage: React.VFC = (props: Props) => {
           </Box>
         </Box>
 
-        <Box as="section" pt="100" maxWidth={1200} mx="auto">
-          <Heading as="h2" fontSize="4.8rem" fontWeight="bold" ml={16}>
+        <Box as="section" pt="100" maxWidth="1200px" mx="auto">
+          <Heading as="h2" fontSize="4.8rem" fontWeight="bold" ml="16px">
             Work
           </Heading>
-          <List display="flex" flexWrap="wrap" mx={16}>
+          <List display="flex" flexWrap="wrap" mx="16px" mt="32px">
             {props.work.map((work) => {
               return (
                 <ListItem key={work.id} width="45%">
@@ -165,11 +162,11 @@ const RootPage: React.VFC = (props: Props) => {
           </List>
         </Box>
 
-        <Box as="section" pt={100} maxWidth={1200} mx="auto">
-          <Heading as="h2" fontSize="4.8rem" fontWeight="bold" ml="16">
+        <Box as="section" pt="100px" maxWidth="1200px" mx="auto">
+          <Heading as="h2" fontSize="4.8rem" fontWeight="bold" ml="16px">
             Blog
           </Heading>
-          <Box mt={40} ml={16}>
+          <Box mt="32px" mx="16px">
             <Link href="/blog">
               <a>blogページへ</a>
             </Link>
