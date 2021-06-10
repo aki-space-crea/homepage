@@ -43,25 +43,22 @@ const Header: VFC = () => {
           </a>
         </Link>
       </Box>
-      <Flex as="nav" flexGrow={2} display={{ base: "none", md: "flex"}} align="center">
-        <Box mr="48px">
-          <Link href="/">
-            <a>About</a>
-          </Link>
-        </Box>
+      <Flex as="nav" flexGrow={2} display={{ base: "none", md: "flex"}} justify="flex-start" align="center">
         <Box mr="48px">
           <Link href="/blog">
             <a>Blog</a>
           </Link>
         </Box>
-        <Button onClick={toggleColorMode} variant="unstyled" fontSize="16px">
-          {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
+      </Flex>
+      <Flex>
+        <Button onClick={toggleColorMode} variant="unstyled" fontSize="16px"  mr={{ base: "16px", md: "0"}}>
+          {colorMode === "light" ? <MoonIcon /> : <SunIcon color="gray.700" />}
+        </Button>
+        {/* ドロワー */}
+        <Button ref={btnRef} onClick={onOpen} aria-label="メニューボタン" variant="unstyled" display={{ base: "block", md: "none"}}>
+          <HamburgerIcon color="gray.700" height="20px" width="20px" />
         </Button>
       </Flex>
-      {/* ドロワー */}
-      <Button ref={btnRef} onClick={onOpen} aria-label="メニューボタン" variant="unstyled" display={{ base: "block", md: "none"}}>
-        <HamburgerIcon color="gray.700" height="20px" width="20px" />
-      </Button>
       <Drawer
         isOpen={isOpen}
         placement="right"
@@ -78,11 +75,6 @@ const Header: VFC = () => {
                 <Link href="/blog">
                   <a>Blog</a>
                 </Link>
-              </ListItem>
-              <ListItem>
-                <Button onClick={toggleColorMode} variant="unstyled" fontSize="16px">
-                  {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
-                </Button>
               </ListItem>
             </List>
           </DrawerBody>
