@@ -9,6 +9,12 @@ import {
   Text,
   Image,
   Flex,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalCloseButton,
+  ModalBody,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 
@@ -53,6 +59,9 @@ const RootPage: React.VFC = (props: Props) => {
     "YouTube",
     "TikTok",
   ]);
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [modalSrc, setModalSrc] = useState("");
 
   return (
     <>
@@ -144,12 +153,14 @@ const RootPage: React.VFC = (props: Props) => {
           <Heading as="h2" fontSize="4.8rem" fontWeight="bold" ml="16px">
             Work
           </Heading>
-          <List display="flex" flexWrap="wrap" mx="16px" mt="32px">
+          <List className="top-work" display="flex" flexWrap="wrap" mx="16px" mt="32px">
             {props.work.map((work) => {
               return (
-                <ListItem key={work.id} width="45%">
-                  <Box>
-                    <Image src={work.img.src.url} alt={work.img.alt} />
+                <ListItem key={work.id} width="45%" cursor="pointer">
+                  <Box onClick={onOpen}>
+                    <Image src={work.img.src.url} alt={work.img.alt} onClick={(e) => {
+                      setModalSrc(e.currentTarget.src);
+                    }}/>
                   </Box>
                   <Box
                     dangerouslySetInnerHTML={{
@@ -160,6 +171,16 @@ const RootPage: React.VFC = (props: Props) => {
               );
             })}
           </List>
+          
+          <Modal isOpen={isOpen} onClose={onClose}>
+            <ModalOverlay />
+            <ModalContent maxWidth="1200px">
+              <ModalCloseButton background="gray.700" color="#fff" />
+              <ModalBody>
+                <Image src={modalSrc} />
+              </ModalBody>
+            </ModalContent>
+          </Modal>
         </Box>
 
         <Box as="section" pt="100px" maxWidth="1200px" mx="auto">

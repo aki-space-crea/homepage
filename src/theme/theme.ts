@@ -24,6 +24,11 @@ const theme = extendTheme({
         fontWeight: "bold",
         letterSpacing: "3px"
       },
+      ".top-work": {
+        p: {
+          marginTop: "8px"
+        }
+      },
       ".article-main": {
         h2: {
           fontSize: "2.4rem",
