@@ -35,7 +35,8 @@ type Props = {
           width: number;
         };
         alt: string;
-      };
+      },
+      link: string | undefined;
     }
   ];
 };
@@ -74,14 +75,12 @@ const RootPage: React.VFC = (props: Props) => {
         pb="100px"
         boxSizing="border-box"
       >
-        <Box minWidth="200px" maxWidth="500px" width="50%">
-          <Image src="/images/profile.jpg"></Image>
-        </Box>
+        <Box minHeight="300px" minWidth="200px" maxWidth="500px" width="50%" background="linear-gradient(45deg, #afa, #aaf, #afa)" ></Box>
         <Heading
           as="h1"
           height="100%"
           width="100%"
-          fontSize={{ base: "4.8rem", md: "6.4rem"}}
+          fontSize={{ base: "3.2rem", md: "4.8rem"}}
           fontWeight="bold"
           position="absolute"
           top="50%"
@@ -92,7 +91,7 @@ const RootPage: React.VFC = (props: Props) => {
           justifyContent="center"
           alignItems="flex-end"
         >
-          Kuroda Aki
+          マイペースはいい事
         </Heading>
       </Flex>
       <Flex justify="center" mt="140px">
@@ -153,11 +152,11 @@ const RootPage: React.VFC = (props: Props) => {
           <Heading as="h2" fontSize="4.8rem" fontWeight="bold" ml="16px">
             Work
           </Heading>
-          <List className="top-work" display="flex" flexWrap="wrap" mx="16px" mt="32px">
+          <List className="top-work" display="flex" justifyContent="space-between" flexWrap="wrap" mx="16px" mt="32px">
             {props.work.map((work) => {
               return (
-                <ListItem key={work.id} width="45%" cursor="pointer">
-                  <Box onClick={onOpen}>
+                <ListItem key={work.id} width="45%" mt="16px">
+                  <Box onClick={onOpen} cursor="pointer">
                     <Image src={work.img.src.url} alt={work.img.alt} onClick={(e) => {
                       setModalSrc(e.currentTarget.src);
                     }}/>
@@ -167,6 +166,9 @@ const RootPage: React.VFC = (props: Props) => {
                       __html: `${work.richEditor}`,
                     }}
                   ></Box>
+                  <Text cursor="pointer" textDecoration="underline">
+                    <Link href={work.link}>{work.link}</Link>
+                  </Text>
                 </ListItem>
               );
             })}
@@ -174,7 +176,7 @@ const RootPage: React.VFC = (props: Props) => {
           
           <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
-            <ModalContent maxWidth="1200px">
+            <ModalContent maxWidth="1200px" background="#fff">
               <ModalCloseButton background="gray.700" color="#fff" />
               <ModalBody>
                 <Image src={modalSrc} />
