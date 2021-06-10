@@ -44,7 +44,7 @@ const Header: VFC = () => {
         </Link>
       </Box>
       <Flex as="nav" flexGrow={2} display={{ base: "none", md: "flex"}} justify="flex-start" align="center">
-        <Box mr="48px">
+        <Box mr="48px" color="gray.700">
           <Link href="/blog">
             <a>Blog</a>
           </Link>
