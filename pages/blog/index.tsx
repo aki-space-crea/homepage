@@ -31,7 +31,7 @@ const index = props => {
             <ListItem width="45%" maxWidth="45%" key={blogItem.id}>
               <Link href="/blog/[slug]" as={`/blog/${blogItem.id}`}>
                 <a
-                  style={{ height: 250, display: `block`, overflow: `hidden` }}
+                  style={{ height: 250, display: `flex`, justifyContent: `center`, overflow: `hidden` }}
                 >
                   <Image src={blogItem.img.src.url}></Image>
                 </a>

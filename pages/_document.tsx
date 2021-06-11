@@ -17,9 +17,6 @@ class MyDocument extends Document {
         <ChakraProvider theme={theme}>
           <Box
             as="body"
-            pb="65px"
-            fontSize="1.4rem"
-            lineHeight="1.5"
           >
             <ColorModeScript initialColorMode={theme.config.initialColorMode} />
             <Layout>

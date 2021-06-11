@@ -14,7 +14,10 @@ const theme = extendTheme({
         fontSize: "10px"
       },
       body: {
+        padding: "16px 0 64px",
         color: mode('gray.700', '#fff')(props),
+        fontSize: "1.4rem",
+        lineHeight: "1.5"
       },
       h1: {
         letterSpacing: "5px"
@@ -41,6 +44,17 @@ const theme = extendTheme({
           },
           "100%": {
             backgroundPosition: "0% 50%"
+          }
+        }
+      },
+      ".down-arrow": {
+        animation: "moveArrow 1.2s ease infinite",
+        "@keyframes moveArrow": {
+          "0%": {
+            transform: "translateY(-40px)"
+          },
+          "100%": {
+            transform: "translateY(0)"
           }
         }
       },
