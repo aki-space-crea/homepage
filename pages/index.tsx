@@ -75,7 +75,7 @@ const RootPage: React.VFC = (props: Props) => {
         pb="100px"
         boxSizing="border-box"
       >
-        <Box minHeight="300px" minWidth="200px" maxWidth="500px" width="50%" background="linear-gradient(45deg, #afa, #aaf, #afa)" ></Box>
+        <Box className="top-fv-bg" ></Box>
         <Heading
           as="h1"
           height="100%"

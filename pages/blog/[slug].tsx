@@ -1,4 +1,11 @@
-import { Box, Heading, Image, Flex } from "@chakra-ui/react";
+import { Box, Heading, Image, Flex, Text } from "@chakra-ui/react";
+
+import dayjs from "dayjs";
+import timezone from "dayjs/plugin/timezone";
+import utc from "dayjs/plugin/utc";
+
+dayjs.extend(timezone);
+dayjs.extend(utc);
 
 const SSGArticlePage = props => {
   return (
@@ -9,6 +16,8 @@ const SSGArticlePage = props => {
         </Flex>
       </Box>
       <Box pt="100px" px="16px" maxWidth="1200px" mx="auto">
+        <Text>作成日: {dayjs.utc(props.createdAt).tz('Asia/Tokyo').format('YYYY-MM-DD')}</Text>
+        <Text mb="40px">更新日: {dayjs.utc(props.updatedAt).tz('Asia/Tokyo').format('YYYY-MM-DD')}</Text>
         <Heading as="h1" fontSize="3.2rem" fontWeight="bold">
           {props.title}
         </Heading>

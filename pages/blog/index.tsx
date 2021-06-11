@@ -1,6 +1,13 @@
 import { Heading, List, ListItem, Text, Box, Image } from "@chakra-ui/react";
 import Link from "next/link";
 
+import dayjs from "dayjs";
+import timezone from "dayjs/plugin/timezone";
+import utc from "dayjs/plugin/utc";
+
+dayjs.extend(timezone);
+dayjs.extend(utc);
+
 const index = props => {
   const blogLists = props.blog.contents;
   return (
@@ -33,7 +40,8 @@ const index = props => {
                 <Text fontSize="2.4rem" fontWeight="bold">
                   {blogItem.title}
                 </Text>
-                <Text>{blogItem.updatedAt}</Text>
+                <Text>作成日: {dayjs.utc(blogItem.createdAt).tz('Asia/Tokyo').format('YYYY-MM-DD')}</Text>
+                <Text>更新日: {dayjs.utc(blogItem.updatedAt).tz('Asia/Tokyo').format('YYYY-MM-DD')}</Text>
               </Box>
             </ListItem>
           );
