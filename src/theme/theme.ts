@@ -1,9 +1,9 @@
-import { mode } from '@chakra-ui/theme-tools';
-import { extendTheme, keyframes, ThemeConfig } from "@chakra-ui/react";
+import { mode } from '@chakra-ui/theme-tools'
+import { extendTheme, keyframes, ThemeConfig } from '@chakra-ui/react'
 
 const config: ThemeConfig = {
-  initialColorMode: "light",
-  useSystemColorMode: false,
+  initialColorMode: 'light',
+  useSystemColorMode: false
 }
 
 const theme = extendTheme({
@@ -11,67 +11,67 @@ const theme = extendTheme({
   styles: {
     global: props => ({
       html: {
-        fontSize: "10px"
+        fontSize: '10px'
       },
       body: {
-        padding: "16px 0 64px",
+        paddingBottom: '64px',
         color: mode('gray.700', '#fff')(props),
-        fontSize: "1.4rem",
-        lineHeight: "1.5"
+        fontSize: '1.4rem',
+        lineHeight: '1.5'
       },
       h1: {
-        letterSpacing: "5px"
+        letterSpacing: '5px'
       },
       h2: {
-        fontSize: "2.4rem",
-        fontWeight: "bold",
-        letterSpacing: "3px"
+        fontSize: '2.4rem',
+        fontWeight: 'bold',
+        letterSpacing: '3px'
       },
-      ".top-fv-bg": {
-        minHeight: "300px",
-        minWidth: "200px",
-        maxWidth: "500px",
-        width: "50%",
-        background: "linear-gradient(45deg, #afa, #aaf, #afa)",
-        backgroundSize: "400% 400%",
-        animation: "moveBg 20s ease-in infinite",
-        "@keyframes moveBg": {
-          "0%": {
-            backgroundPosition: "0% 50%"
+      '.top-fv-bg': {
+        minHeight: '300px',
+        minWidth: '200px',
+        maxWidth: '500px',
+        width: '50%',
+        background: 'linear-gradient(45deg, #afa, #aaf, #afa)',
+        backgroundSize: '400% 400%',
+        animation: 'moveBg 20s ease-in infinite',
+        '@keyframes moveBg': {
+          '0%': {
+            backgroundPosition: '0% 50%'
           },
-          "50%": {
-            backgroundPosition: "100% 50%"
+          '50%': {
+            backgroundPosition: '100% 50%'
           },
-          "100%": {
-            backgroundPosition: "0% 50%"
+          '100%': {
+            backgroundPosition: '0% 50%'
           }
         }
       },
-      ".down-arrow": {
-        animation: "moveArrow 1.2s ease infinite",
-        "@keyframes moveArrow": {
-          "0%": {
-            transform: "translateY(-40px)"
+      '.down-arrow': {
+        animation: 'moveArrow 1.2s ease infinite',
+        '@keyframes moveArrow': {
+          '0%': {
+            transform: 'translateY(-40px)'
           },
-          "100%": {
-            transform: "translateY(0)"
+          '100%': {
+            transform: 'translateY(0)'
           }
         }
       },
-      ".top-work": {
+      '.top-work': {
         p: {
-          marginTop: "8px"
+          marginTop: '8px'
         }
       },
-      ".article-main": {
+      '.article-main': {
         h2: {
-          fontSize: "2.4rem",
-          fontWeight: "bold",
-          letterSpacing: "3px"
+          fontSize: '2.4rem',
+          fontWeight: 'bold',
+          letterSpacing: '3px'
         }
       }
     })
   }
-});
+})
 
-export default theme;
+export default theme

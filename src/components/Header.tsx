@@ -1,7 +1,7 @@
-import Link from "next/link";
-import React, { VFC } from "react";
+import Link from 'next/link'
+import React, { VFC } from 'react'
 
-import { 
+import {
   Box,
   Flex,
   Drawer,
@@ -15,15 +15,15 @@ import {
   Button,
   List,
   ListItem,
-  useColorMode,
-} from "@chakra-ui/react";
+  useColorMode
+} from '@chakra-ui/react'
 import { HamburgerIcon, MoonIcon, SunIcon } from '@chakra-ui/icons'
 
 const Header: VFC = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const btnRef = React.useRef();
-  const { colorMode, toggleColorMode } = useColorMode();
-  
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const btnRef = React.useRef(null)
+  const { colorMode, toggleColorMode } = useColorMode()
+
   return (
     <Flex
       as="header"
@@ -43,7 +43,7 @@ const Header: VFC = () => {
           </a>
         </Link>
       </Box>
-      <Flex as="nav" flexGrow={2} display={{ base: "none", md: "flex"}} justify="flex-start" align="center">
+      <Flex as="nav" flexGrow={2} display={{ base: 'none', md: 'flex' }} justify="flex-start" align="center">
         <Box mr="48px" color="gray.700">
           <Link href="/blog">
             <a>Blog</a>
@@ -51,41 +51,44 @@ const Header: VFC = () => {
         </Box>
       </Flex>
       <Flex>
-        <Button onClick={toggleColorMode} variant="unstyled" fontSize="16px"  mr={{ base: "16px", md: "0"}}>
-          {colorMode === "light" ? <MoonIcon /> : <SunIcon color="gray.700" />}
+        <Button onClick={toggleColorMode} variant="unstyled" fontSize="16px" mr={{ base: '16px', md: '0' }}>
+          {colorMode === 'light' ? <MoonIcon /> : <SunIcon color="gray.700" />}
         </Button>
         {/* ドロワー */}
-        <Button ref={btnRef} onClick={onOpen} aria-label="メニューボタン" variant="unstyled" display={{ base: "block", md: "none"}}>
+        <Button
+          ref={btnRef}
+          onClick={onOpen}
+          aria-label="メニューボタン"
+          variant="unstyled"
+          display={{ base: 'block', md: 'none' }}
+        >
           <HamburgerIcon color="gray.700" height="20px" width="20px" />
         </Button>
       </Flex>
-      <Drawer
-        isOpen={isOpen}
-        placement="right"
-        onClose={onClose}
-        finalFocusRef={btnRef}
-      >
+      <Drawer isOpen={isOpen} placement="right" onClose={onClose} finalFocusRef={btnRef}>
         <DrawerOverlay />
-        <DrawerContent >
+        <DrawerContent>
           <DrawerHeader>Create your account</DrawerHeader>
 
           <DrawerBody>
             <List>
               <ListItem>
-                <Link href="/blog">
-                  <a>Blog</a>
-                </Link>
+                <Button variant="unstyled" onClick={onClose}>
+                  <Link href="/blog">
+                    <a>Blog</a>
+                  </Link>
+                </Button>
               </ListItem>
             </List>
           </DrawerBody>
 
           <DrawerFooter>
-            <DrawerCloseButton top="auto" bottom="16px"/>
+            <DrawerCloseButton top="auto" bottom="16px" />
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
     </Flex>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

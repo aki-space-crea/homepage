@@ -1,11 +1,11 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
-import { ChakraProvider, Box, ColorModeScript } from "@chakra-ui/react";
-import theme from "../src/theme/theme";
+import Document, { Html, Head, Main, NextScript } from 'next/document'
+import { ChakraProvider, Box, ColorModeScript } from '@chakra-ui/react'
+import theme from '../src/theme/theme'
 
-import Layout from "../src/components/Layout";
+import Layout from '../src/components/Layout'
 
 class MyDocument extends Document {
-  static async getInitialProps(ctx) {
+  static async getInitialProps(ctx: any) {
     const initialProps = await Document.getInitialProps(ctx)
     return { ...initialProps }
   }
@@ -15,9 +15,7 @@ class MyDocument extends Document {
       <Html>
         <Head />
         <ChakraProvider theme={theme}>
-          <Box
-            as="body"
-          >
+          <Box as="body">
             <ColorModeScript initialColorMode={theme.config.initialColorMode} />
             <Layout>
               <Main />
@@ -26,8 +24,8 @@ class MyDocument extends Document {
           </Box>
         </ChakraProvider>
       </Html>
-    );
+    )
   }
 }
 
-export default MyDocument;
+export default MyDocument

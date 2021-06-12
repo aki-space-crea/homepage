@@ -17,6 +17,7 @@
     "@chakra-ui/react": "^1.6.3",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "dayjs": "^1.10.5",
     "framer-motion": "^4",
     "next": "^10.2.3",
