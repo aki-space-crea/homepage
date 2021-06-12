@@ -1,8 +1,9 @@
+import { VFC } from 'react'
 import { useState } from 'react'
 
 import { Box, List, ListItem, Text } from '@chakra-ui/react'
 
-const ProfileInfo = () => {
+const ProfileInfo: VFC = () => {
   const [profileBaseInfos] = useState([
     { tit: 'Name', val: 'AKI' },
     { tit: 'Gender', val: 'X' },

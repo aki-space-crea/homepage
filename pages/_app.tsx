@@ -1,10 +1,11 @@
+import { AppProps } from 'next/app'
 import Head from 'next/head'
 import { ChakraProvider } from '@chakra-ui/react'
 
 import Header from '../src/components/Header'
 import Footer from '../src/components/Footer'
 
-export default function App(props) {
+const App = (props: AppProps) => {
   const { Component, pageProps } = props
 
   return (
@@ -24,3 +25,5 @@ export default function App(props) {
     </>
   )
 }
+
+export default App

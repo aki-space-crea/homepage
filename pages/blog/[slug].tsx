@@ -7,7 +7,25 @@ import utc from 'dayjs/plugin/utc'
 dayjs.extend(timezone)
 dayjs.extend(utc)
 
-const SSGArticlePage = props => {
+type Props = {
+  createdAt: string
+  updatedAt: string
+  title: string
+  body: string
+  img: {
+    fieldId: string
+    src: {
+      url: string
+      height: number
+      width: number
+    }
+    alt: string
+  }
+  meta: string
+  tag: string
+}
+
+const SSGArticlePage = (props: Props) => {
   return (
     <>
       <Box as="section">
@@ -44,15 +62,43 @@ const SSGArticlePage = props => {
   )
 }
 
+type Article = {
+  id: string
+  createdAt: string
+  updatedAt: string
+  publishedAt: string
+  revisedAt: string
+  img: {
+    fieldId: string
+    src: {
+      url: string
+      height: number
+      width: number
+    }
+    alt: string
+  }
+  title: string
+  meta: string
+  tag: string
+  body: [
+    {
+      fieldId: string
+      richEditor: string
+    }
+  ]
+}
+
+type ApiKey = {}
+
 export const getStaticPaths = async () => {
-  const key = {
+  const key: ApiKey = {
     headers: { 'X-API-KEY': process.env.XAPIKEY }
   }
   const res = await fetch(`https://akispacecrea.microcms.io/api/v1/blog/`, key)
 
   const articles = await res.json()
 
-  const paths = articles.contents.map(article => {
+  const paths = articles.contents.map((article: Article) => {
     const slug = String(article.id)
     return { params: { slug: slug } }
   })
@@ -63,10 +109,17 @@ export const getStaticPaths = async () => {
   }
 }
 
-export const getStaticProps = async context => {
-  const slug = context.params.slug
+type Ctx = {
+  params: { slug: string }
+  locales: undefined | string
+  locale: undefined | string
+  defaultLocale: undefined | string
+}
 
-  const key = {
+export const getStaticProps = async (ctx: Ctx) => {
+  const slug = ctx.params.slug
+
+  const key: ApiKey = {
     headers: { 'X-API-KEY': process.env.XAPIKEY }
   }
   const res = await fetch(`https://akispacecrea.microcms.io/api/v1/blog/${slug}`, key)
@@ -84,6 +137,8 @@ export const getStaticProps = async context => {
 
   return {
     props: {
+      createdAt: article.createdAt,
+      updatedAt: article.updatedAt,
       title: article.title,
       body: text(),
       img: article.img,

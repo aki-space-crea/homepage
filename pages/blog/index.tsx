@@ -48,7 +48,6 @@ type Props = {
 }
 
 const index = (props: Props) => {
-  console.log(props)
   const blogLists = props.blog.contents
   return (
     <Box>
