@@ -64,12 +64,12 @@ const index = (props: Props) => {
           Blog
         </Heading>
       </Box>
-      <List display="flex" justifyContent="space-around" px="16px">
+      <List display="flex" justifyContent="space-around" px="16px" maxWidth="1200px" mx="auto">
         {blogLists.map(blogItem => {
           return (
             <ListItem width="45%" maxWidth="45%" key={blogItem.id}>
               <Link href="/blog/[slug]" as={`/blog/${blogItem.id}`}>
-                <a style={{ display: `flex`, justifyContent: `center`, overflow: `hidden` }}>
+                <a style={{ display: `flex`, justifyContent: `center`, overflow: `hidden`, maxHeight: `347px` }}>
                   <Image src={blogItem.img.src.url}></Image>
                 </a>
               </Link>

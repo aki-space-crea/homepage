@@ -75,7 +75,7 @@ const RootPage = (props: Props) => {
           justifyContent="center"
           alignItems="flex-end"
         >
-          素敵な時が味方
+          ステキな時が味方
         </Heading>
       </Flex>
       <Flex justify="center" mt="140px">
@@ -92,7 +92,7 @@ const RootPage = (props: Props) => {
                 LovelyTimesAreOnSide
                 <br />
                 は<br />
-                素敵な時が味方を、コンセプトにデザイン、コーディングであなたの活動を応援します。
+                ステキな時が味方を、コンセプトにデザイン、コーディングであなたの活動を応援します。
                 <br />
                 <br />
                 素敵な時とは
