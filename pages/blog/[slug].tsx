@@ -29,11 +29,11 @@ const SSGArticlePage = (props: Props) => {
   return (
     <>
       <Box as="section">
-        <Flex height="500px" overflow="hidden" justify="center">
+        <Flex overflow="hidden" justify="center">
           <Image src={props.img.src.url} alt={props.img.alt} />
         </Flex>
       </Box>
-      <Box pt="100px" px="16px" maxWidth="1200px" mx="auto">
+      <Box pt="40px" px="16px" maxWidth="1200px" mx="auto">
         <Text>
           作成日:{' '}
           {dayjs
