@@ -69,7 +69,7 @@ const index = (props: Props) => {
           return (
             <ListItem width="45%" maxWidth="45%" key={blogItem.id}>
               <Link href="/blog/[slug]" as={`/blog/${blogItem.id}`}>
-                <a style={{ display: `flex`, justifyContent: `center`, overflow: `hidden`, maxHeight: `347px` }}>
+                <a style={{ display: `block`, overflow: `hidden`, maxHeight: `347px` }}>
                   <Image src={blogItem.img.src.url}></Image>
                 </a>
               </Link>

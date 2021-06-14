@@ -5,7 +5,7 @@ import { Box, Text } from '@chakra-ui/react'
 const Header: VFC = () => {
   return (
     <Box as="footer" display="flex" justifyContent="center" mt="100">
-      <Text>&copy; akispacecrea</Text>
+      <Text>&copy; LovelyTimesAreOnSide</Text>
     </Box>
   )
 }
