@@ -29,9 +29,9 @@ const SSGArticlePage = (props: Props) => {
   return (
     <>
       <Box as="section">
-        <Flex overflow="hidden" justify="center">
-          <Image src={props.img.src.url} alt={props.img.alt} />
-        </Flex>
+        <Box>
+          <Image src={props.img.src.url} alt={props.img.alt} mx="auto" />
+        </Box>
       </Box>
       <Box pt="40px" px="16px" maxWidth="1200px" mx="auto">
         <Text>
