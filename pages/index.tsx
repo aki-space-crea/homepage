@@ -64,6 +64,7 @@ const RootPage = (props: Props) => {
           as="h1"
           height="100%"
           width="100%"
+          maxWidth="343px"
           fontSize={{ base: '3.2rem', md: '4.8rem' }}
           fontWeight="bold"
           position="absolute"
