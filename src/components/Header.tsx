@@ -39,7 +39,7 @@ const Header: VFC = () => {
       <Box width="150px" mr="100px">
         <Link href="/">
           <a>
-            <img src="/images/lovelytimes-areonside-logo.svg" alt="ロゴ" />
+            <img src="/images/akispacecrea-logo-base.svg" alt="ロゴ" />
           </a>
         </Link>
       </Box>

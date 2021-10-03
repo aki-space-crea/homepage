@@ -64,8 +64,8 @@ const index = (props: Props) => {
           Blog
         </Heading>
       </Box>
-      <List display="flex" justifyContent="space-around" px="16px" maxWidth="1200px" mx="auto">
-        {blogLists.map(blogItem => {
+      <List display="flex" justifyContent="space-between" flexWrap="wrap" px="16px" maxWidth="1200px" mx="auto">
+        {blogLists.map((blogItem) => {
           return (
             <ListItem width="45%" maxWidth="45%" key={blogItem.id}>
               <Link href="/blog/[slug]" as={`/blog/${blogItem.id}`}>
@@ -77,20 +77,8 @@ const index = (props: Props) => {
                 <Text fontSize="2.4rem" fontWeight="bold">
                   {blogItem.title}
                 </Text>
-                <Text>
-                  作成日:{' '}
-                  {dayjs
-                    .utc(blogItem.createdAt)
-                    .tz('Asia/Tokyo')
-                    .format('YYYY-MM-DD')}
-                </Text>
-                <Text>
-                  更新日:{' '}
-                  {dayjs
-                    .utc(blogItem.updatedAt)
-                    .tz('Asia/Tokyo')
-                    .format('YYYY-MM-DD')}
-                </Text>
+                <Text>作成日: {dayjs.utc(blogItem.createdAt).tz('Asia/Tokyo').format('YYYY-MM-DD')}</Text>
+                <Text>更新日: {dayjs.utc(blogItem.updatedAt).tz('Asia/Tokyo').format('YYYY-MM-DD')}</Text>
               </Box>
             </ListItem>
           )
