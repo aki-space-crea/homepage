@@ -74,8 +74,9 @@ const RootPage = (props: Props) => {
           display="flex"
           justifyContent="center"
           alignItems="flex-end"
+          padding="0 16px"
         >
-          ステキな時が味方
+          <img src="/images/akispacecrea-logo-base.svg" alt="" />
         </Heading>
       </Flex>
       <Flex justify="center" mt="140px">
@@ -88,39 +89,7 @@ const RootPage = (props: Props) => {
           </Heading>
           <Box position="relative">
             <Box width="60%" borderRadius="8px" mt="32px" mx="16px">
-              <Text>
-                LovelyTimesAreOnSide
-                <br />
-                は<br />
-                ステキな時が味方を、コンセプトにデザイン、コーディングであなたの活動を応援します。
-                <br />
-                <br />
-                素敵な時とは
-                <br />
-                <br />
-                それぞれが過ごしてきた過去
-                <br />
-                それぞれが感じている今
-                <br />
-                それぞれが送るであろう未来
-                <br />
-                の事です
-                <br />
-                <br />
-                それらはみんな違います。
-                <br />
-                だけど素敵、だから素敵なのかもしれません。
-                <br />
-                <br />
-                少なくともそれらは味方になってくれるはずです。
-                <br />
-                良い過去も悪い過去も、積み重なり今になって未来になる。
-                <br />
-                それらは表現して良い、あなただけのものなんだから
-                <br />
-                <br />
-                素敵な時が味方
-              </Text>
+              <Text>akispacecreaは私akiの表現の場です。</Text>
             </Box>
           </Box>
         </Box>
@@ -142,7 +111,7 @@ const RootPage = (props: Props) => {
             Work
           </Heading>
           <List className="top-work" display="flex" justifyContent="space-between" flexWrap="wrap" mx="16px" mt="32px">
-            {props.work.map(work => {
+            {props.work.map((work) => {
               return (
                 <ListItem key={work.id} width="47%" mt="16px">
                   <Box onClick={onOpen} cursor="pointer">
