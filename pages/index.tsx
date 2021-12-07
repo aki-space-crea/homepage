@@ -15,7 +15,8 @@ import {
   ModalContent,
   ModalCloseButton,
   ModalBody,
-  useDisclosure
+  useDisclosure,
+  useColorModeValue
 } from '@chakra-ui/react'
 import { ChevronDownIcon } from '@chakra-ui/icons'
 
@@ -47,6 +48,7 @@ type Props = {
 const RootPage = (props: Props) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [modalSrc, setModalSrc] = useState('')
+  const color = useColorModeValue('', '#fff')
 
   return (
     <>
@@ -60,25 +62,6 @@ const RootPage = (props: Props) => {
         boxSizing="border-box"
       >
         <Box className="top-fv-bg"></Box>
-        <Heading
-          as="h1"
-          height="100%"
-          width="100%"
-          maxWidth="343px"
-          fontSize={{ base: '3.2rem', md: '4.8rem' }}
-          fontWeight="bold"
-          position="absolute"
-          top="50%"
-          left="50%"
-          transform="translate(-50%, -46.5%)"
-          textAlign="center"
-          display="flex"
-          justifyContent="center"
-          alignItems="flex-end"
-          padding="0 16px"
-        >
-          <img src="/images/akispacecrea-logo-base.svg" alt="" />
-        </Heading>
       </Flex>
       <Flex justify="center" mt="140px">
         <ChevronDownIcon className="down-arrow" h="40px" w="40px" />
