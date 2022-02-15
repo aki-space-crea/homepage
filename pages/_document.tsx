@@ -33,7 +33,7 @@ class MyDocument extends Document {
           />
         </Head>
         <ChakraProvider theme={theme}>
-          <Box as="body">
+          <Box as="body" width="100vw" maxWidth="1280px" mx="auto">
             <ColorModeScript initialColorMode={theme.config.initialColorMode} />
             <Layout>
               <Main />
