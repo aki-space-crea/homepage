@@ -15,8 +15,7 @@ import {
   ModalContent,
   ModalCloseButton,
   ModalBody,
-  useDisclosure,
-  useColorModeValue
+  useDisclosure
 } from '@chakra-ui/react'
 import { ChevronDownIcon } from '@chakra-ui/icons'
 
@@ -48,7 +47,6 @@ type Props = {
 const RootPage = (props: Props) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [modalSrc, setModalSrc] = useState('')
-  const color = useColorModeValue('', '#fff')
 
   return (
     <>
@@ -95,7 +93,7 @@ const RootPage = (props: Props) => {
             Work
           </Heading>
           <List className="top-work" display="flex" justifyContent="space-between" flexWrap="wrap" mx="16px" mt="32px">
-            {props.work.map((work) => {
+            {props.work.map(work => {
               return (
                 <ListItem key={work.id} width="47%" mt="16px">
                   <Box onClick={onOpen} cursor="pointer">
