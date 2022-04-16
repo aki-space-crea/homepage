@@ -92,7 +92,7 @@ type ApiKey = {}
 
 export const getStaticProps = async () => {
   const key: ApiKey = {
-    headers: { 'X-API-KEY': process.env.XAPIKEY }
+    headers: { 'X-MICROCMS-API-KEY': process.env.X_MICRO_CMS_APIKEY }
   }
   const res = await fetch(`https://akispacecrea.microcms.io/api/v1/blog/`, key)
 

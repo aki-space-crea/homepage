@@ -93,7 +93,7 @@ const RootPage = (props: Props) => {
             Work
           </Heading>
           <List className="top-work" display="flex" justifyContent="space-between" flexWrap="wrap" mx="16px" mt="32px">
-            {props.work.map(work => {
+            {props.work.map((work) => {
               return (
                 <ListItem key={work.id} width="47%" mt="16px">
                   <Box onClick={onOpen} cursor="pointer">
@@ -148,7 +148,7 @@ type ApiKey = {}
 
 export const getStaticProps = async () => {
   const key: ApiKey = {
-    headers: { 'X-API-KEY': process.env.XAPIKEY }
+    headers: { 'X-MICROCMS-API-KEY': process.env.X_MICRO_CMS_APIKEY }
   }
   const res = await fetch(`https://akispacecrea.microcms.io/api/v1/work/`, key)
 
