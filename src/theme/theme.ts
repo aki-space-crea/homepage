@@ -9,13 +9,14 @@ const config: ThemeConfig = {
 const theme = extendTheme({
   config,
   styles: {
-    global: props => ({
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    global: () => ({
       html: {
         fontSize: '10px'
       },
       body: {
         paddingBottom: '64px',
-        color: mode('gray.700', '#fff')(props),
+        color: mode('gray.700', '#fff'),
         fontSize: '1.4rem',
         lineHeight: '1.5'
       },
