@@ -84,7 +84,7 @@ type ApiKey = {}
 
 export const getStaticPaths = async () => {
   const key: ApiKey = {
-    headers: { 'X-API-KEY': process.env.XAPIKEY }
+    headers: { 'X-MICROCMS-API-KEY': process.env.XAPIKEY }
   }
   const res = await fetch(`https://akispacecrea.microcms.io/api/v1/blog/`, key)
 
@@ -111,7 +111,7 @@ export const getStaticProps = async (ctx: Ctx) => {
   const id = ctx.params.id
 
   const key: ApiKey = {
-    headers: { 'X-API-KEY': process.env.XAPIKEY }
+    headers: { 'X-MICROCMS-API-KEY': process.env.XAPIKEY }
   }
   const res = await fetch(`https://akispacecrea.microcms.io/api/v1/blog/${id}/`, key)
 
