@@ -108,7 +108,6 @@ type Ctx = {
 }
 
 export const getStaticProps = async (ctx: Ctx) => {
-  console.log('🦀', ctx)
   const id = ctx.params.id
 
   const key: ApiKey = {
@@ -117,7 +116,6 @@ export const getStaticProps = async (ctx: Ctx) => {
   const res = await fetch(`https://akispacecrea.microcms.io/api/v1/blog/${id}/`, key)
 
   const article = await res.json()
-  console.log('🐟', article)
 
   const text = () => {
     const arr = []
