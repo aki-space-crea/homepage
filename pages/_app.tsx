@@ -4,11 +4,7 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 import { ChakraProvider } from '@chakra-ui/react'
 
-import Header from '../src/components/Header'
-import Footer from '../src/components/Footer'
-
 const App = (props: AppProps): JSX.Element => {
-  const router = useRouter()
   const { Component, pageProps } = props
 
   return (
@@ -22,8 +18,6 @@ const App = (props: AppProps): JSX.Element => {
 
       <ChakraProvider>
         <Component {...pageProps} />
-        <Header />
-        <Footer />
       </ChakraProvider>
     </>
   )
