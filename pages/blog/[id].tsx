@@ -34,20 +34,8 @@ const SSGArticlePage = (props: Props) => {
         </Box>
       </Box>
       <Box pt="40px" px="16px" maxWidth="1200px" mx="auto">
-        <Text>
-          作成日:{' '}
-          {dayjs
-            .utc(props.createdAt)
-            .tz('Asia/Tokyo')
-            .format('YYYY-MM-DD')}
-        </Text>
-        <Text mb="40px">
-          更新日:{' '}
-          {dayjs
-            .utc(props.updatedAt)
-            .tz('Asia/Tokyo')
-            .format('YYYY-MM-DD')}
-        </Text>
+        <Text>作成日: {dayjs.utc(props.createdAt).tz('Asia/Tokyo').format('YYYY-MM-DD')}</Text>
+        <Text mb="40px">更新日: {dayjs.utc(props.updatedAt).tz('Asia/Tokyo').format('YYYY-MM-DD')}</Text>
         <Heading as="h1" fontSize="3.2rem" fontWeight="bold">
           {props.title}
         </Heading>
@@ -63,27 +51,31 @@ const SSGArticlePage = (props: Props) => {
 }
 
 type Article = {
-  id: string
-  createdAt: string
-  updatedAt: string
-  publishedAt: string
-  revisedAt: string
-  img: {
-    fieldId: string
-    src: {
-      url: string
-      height: number
-      width: number
-    }
-    alt: string
-  }
-  title: string
-  meta: string
-  tag: string
-  body: [
+  contents: [
     {
-      fieldId: string
-      richEditor: string
+      id: string
+      createdAt: string
+      updatedAt: string
+      publis1hedAt: string
+      revisedAt: string
+      img: {
+        fieldId: string
+        src: {
+          url: string
+          height: number
+          width: number
+        }
+        alt: string
+      }
+      title: string
+      meta: string
+      tag: string
+      body: [
+        {
+          fieldId: string
+          richEditor: string
+        }
+      ]
     }
   ]
 }
@@ -92,15 +84,15 @@ type ApiKey = {}
 
 export const getStaticPaths = async () => {
   const key: ApiKey = {
-    headers: { 'X-API-KEY': process.env.XAPIKEY }
+    headers: { 'X-MICROCMS-API-KEY': process.env.X_MICRO_CMS_APIKEY }
   }
   const res = await fetch(`https://akispacecrea.microcms.io/api/v1/blog/`, key)
 
-  const articles = await res.json()
+  const articles: Article = await res.json()
 
-  const paths = articles.contents.map((article: Article) => {
-    const slug = String(article.id)
-    return { params: { slug: slug } }
+  const paths = articles.contents.map((article) => {
+    const id = String(article.id)
+    return { params: { id: id } }
   })
 
   return {
@@ -110,19 +102,18 @@ export const getStaticPaths = async () => {
 }
 
 type Ctx = {
-  params: { slug: string }
-  locales: undefined | string
-  locale: undefined | string
-  defaultLocale: undefined | string
+  params: {
+    id: string
+  }
 }
 
 export const getStaticProps = async (ctx: Ctx) => {
-  const slug = ctx.params.slug
+  const id = ctx.params.id
 
   const key: ApiKey = {
-    headers: { 'X-API-KEY': process.env.XAPIKEY }
+    headers: { 'X-MICROCMS-API-KEY': process.env.X_MICRO_CMS_APIKEY }
   }
-  const res = await fetch(`https://akispacecrea.microcms.io/api/v1/blog/${slug}`, key)
+  const res = await fetch(`https://akispacecrea.microcms.io/api/v1/blog/${id}/`, key)
 
   const article = await res.json()
 

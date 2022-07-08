@@ -15,8 +15,7 @@ import {
   ModalContent,
   ModalCloseButton,
   ModalBody,
-  useDisclosure,
-  useColorModeValue
+  useDisclosure
 } from '@chakra-ui/react'
 import { ChevronDownIcon } from '@chakra-ui/icons'
 
@@ -48,7 +47,6 @@ type Props = {
 const RootPage = (props: Props) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [modalSrc, setModalSrc] = useState('')
-  const color = useColorModeValue('', '#fff')
 
   return (
     <>
@@ -150,7 +148,7 @@ type ApiKey = {}
 
 export const getStaticProps = async () => {
   const key: ApiKey = {
-    headers: { 'X-API-KEY': process.env.XAPIKEY }
+    headers: { 'X-MICROCMS-API-KEY': process.env.X_MICRO_CMS_APIKEY }
   }
   const res = await fetch(`https://akispacecrea.microcms.io/api/v1/work/`, key)
 
