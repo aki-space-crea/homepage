@@ -4,24 +4,12 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 import { ChakraProvider } from '@chakra-ui/react'
 
-import * as gtag from '../lib/gtag'
-
 import Header from '../src/components/Header'
 import Footer from '../src/components/Footer'
 
 const App = (props: AppProps): JSX.Element => {
   const router = useRouter()
   const { Component, pageProps } = props
-
-  useEffect(() => {
-    const handleRouteChange = (url: string) => {
-      gtag.pageview(url)
-    }
-    router.events.on('routeChangeComplete', handleRouteChange)
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange)
-    }
-  }, [router.events])
 
   return (
     <>
