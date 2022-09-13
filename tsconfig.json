@@ -18,7 +18,8 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "allowSyntheticDefaultImports": true,
-    "incremental": true
+    "incremental": true,
+    "baseUrl": "./src"
   },
   "include": [
     "next-env.d.ts",
