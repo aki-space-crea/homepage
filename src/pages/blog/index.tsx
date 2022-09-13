@@ -48,7 +48,7 @@ type Props = {
 }
 
 const index = (props: Props) => {
-  const blogLists = props.blog.contents
+  const blogLists = props.blog.contents || []
   return (
     <Box>
       <Box as="section" height="85vh" position="relative">
