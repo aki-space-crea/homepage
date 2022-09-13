@@ -88,9 +88,9 @@ export const getStaticPaths = async () => {
   }
   const res = await fetch(`https://akispacecrea.microcms.io/api/v1/blog/`, key)
 
-  const articles: Article = await res.json()
+  const articles: Article = (await res.json()) || []
 
-  const paths = articles.contents.map((article) => {
+  const paths = await articles.contents.map((article) => {
     const id = String(article.id)
     return { params: { id: id } }
   })
