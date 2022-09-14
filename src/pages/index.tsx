@@ -19,7 +19,7 @@ import {
 } from '@chakra-ui/react'
 import { ChevronDownIcon } from '@chakra-ui/icons'
 
-import ProfileInfo from '../src/components/ProfileInfo'
+import ProfileInfo from '../components/ProfileInfo'
 
 type Props = {
   work: [

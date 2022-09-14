@@ -3,21 +3,19 @@ import { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import { ChakraProvider } from '@chakra-ui/react'
-
-import * as gtag from '../lib/gtag'
-
-import Header from '../src/components/Header'
-import Footer from '../src/components/Footer'
+import * as gtag from '../utils/gtm'
+import { googleTagManagerId } from '../utils/gtm'
+import GoogleTagManager, { GoogleTagManagerId } from '../components/googleTagManager'
 
 const App = (props: AppProps): JSX.Element => {
-  const router = useRouter()
   const { Component, pageProps } = props
-
+  const router = useRouter()
   useEffect(() => {
     const handleRouteChange = (url: string) => {
       gtag.pageview(url)
     }
     router.events.on('routeChangeComplete', handleRouteChange)
+
     return () => {
       router.events.off('routeChangeComplete', handleRouteChange)
     }
@@ -26,6 +24,8 @@ const App = (props: AppProps): JSX.Element => {
   return (
     <>
       <Head>
+        <GoogleTagManager googleTagManagerId={googleTagManagerId as GoogleTagManagerId} />
+
         <title>My page</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
@@ -34,8 +34,6 @@ const App = (props: AppProps): JSX.Element => {
 
       <ChakraProvider>
         <Component {...pageProps} />
-        <Header />
-        <Footer />
       </ChakraProvider>
     </>
   )
